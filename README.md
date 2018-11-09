@@ -1,26 +1,29 @@
 # groupProject2
 
-** Project title **    Buzz AI
+### Project title:  
+Buzz AI
 
-** Team Members **   Rachida Kone, Sareka Belnavis, Tyler Daughtry, Shane Hall, Anna Nichols
- 
-** Project Description **  Chatbot using IBM Watson 
+### Project Description:
+We will use IBM Watson to build a ChatBot that can interact with guests and respond to their requests.
 
-** MVP **
-    1. Make get request to Watson.
-    2. Make post request to database.
-    2. Polished UI.
+###  MVP:
+1. Buzz AI can respond to the clients’s basics request about parking or ticketing
+2. Polished and responsive UI
+2. Authenticate users
 
-** initial user stories **
-    1. As a user, I want to type to Watson
-    2. Then I want to receive a response
-    3. 
+###  Technologies:
+*   Angular
+*    Watson
+*    MySQL
+*    Express.js
+*    Sequelize.js
+*   JavaScript
+*    HTML5
+*    CSS3
 
-** Sketch of Product **
-    A chat window within a clean UI
- 
-** Rough Breakdown of Tasks **
-    1. Angular - Develop front end in Angular
-    2. IBM Watson - 
-    3. Database - 
-    4. UI - Polished responsive UI
+### Team Members:
+*    Anna Nichols
+*    Rachida Kone
+*    Sareka Belnavis
+*    Shane Hall
+*    Tyler Daughtry
