@@ -7,12 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kora25/groupProject2.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kora25/groupProject2/issues"
+  },
+  "homepage": "https://github.com/Kora25/groupProject2#readme"
   "dependencies": {
     "express": "^4.16.4",
     "mysql2": "^1.6.3",
     "sequelize": "^4.41.0"
+  }
+}
   }
 }
