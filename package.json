@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Kora25/groupProject2/issues"
   },
-  "homepage": "https://github.com/Kora25/groupProject2#readme"
+  "homepage": "https://github.com/Kora25/groupProject2#readme",
+  "dependencies": {
+    "prompt-sync": "^4.1.6",
+    "watson-developer-cloud": "^3.13.0"
+  }
 }

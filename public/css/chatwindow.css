@@ -1,0 +1,19 @@
+body{
+    background-color: #303030;
+}
+
+.Chat__header {
+    align-items: center;
+    background-color: #a28d5b;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    width: 100%;
+}
+
+.WatsonChat__header-shape {
+    border-radius: .5em;
+    fill: #a28d5b;
+    stroke: #303030;
+    stroke-width: 6;
+}
