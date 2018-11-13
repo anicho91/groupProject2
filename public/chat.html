@@ -39,16 +39,16 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="/home"
-                >Home <span class="sr-only">(current)</span></a>
+                >Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/chat">Chat </a>
+              <a class="nav-link" href="/chat">Chat <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/parking">Parking </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/weather">Weather </a>
+                    <a class="nav-link" href="/weather">Weather </a>
             </li>
             <li class="nav-item"><a class="nav-link" href="#">*Login</a></li>
           </ul>
@@ -57,6 +57,19 @@
     </div>
 
     <div class="main">
+        <div class="chatbot">
+            <div class="textBox">
+                <div class="watsonText"><p>Hello</p></div>
+                <div class="userText"><p>Watson, please tell me about the weather for the weekend of Nov 17th.</p></div>
+                <div class="watsonText"><p>The weather will be sunny with a high of 60 degrees.</p></div>
+                
+                <div class="userText"><p>Watson, please tell me about the parking near the stadium.</p></div>
+                <div class="watsonText"><p>The closest parking is E52. Look at the map provided under parking to see more options.</p></div>
+            </div>
+                <label for="textInput">
+                    <input id="textInput" class="input" placeholder="Talk with Watson" type="text">
+                </label><button type="submit">Submit</button>
+        </div>
         
     </div>
 
