@@ -12,7 +12,6 @@ We will use IBM Watson to build a ChatBot that can interact with guests and resp
 2. Authenticate users
 
 ###  Technologies:
-*   Angular
 *    Watson
 *    MySQL
 *    Express.js
