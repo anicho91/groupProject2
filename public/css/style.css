@@ -1,0 +1,88 @@
+/* Tech Gold - #B3A369
+Tech Gold Metallic - #A28D5B
+Blue - #003057  */
+body, html{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-image: url('../gtstadium3.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  
+}
+
+a{
+    color: #003057;
+  }
+  
+  .navbar {
+    background-color:#A28D5B;
+    margin-left: 15%;
+    margin-right: 15%;
+    z-index: 1000;
+  }
+
+  /* .container {
+    height: 100%;
+    width: 100%
+  } */
+
+  .main {
+    display: flex;
+    background-color: whitesmoke;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: -5px;
+    /* align-items: center;
+    justify-content: center; */
+    height: 100%;
+    width: 70%;
+  }
+
+  .parking {
+    height: 100%;
+    flex-flow: column wrap;
+    width: 80%;
+    flex: auto;
+  }
+
+  .chatbot {
+    flex-flow: column wrap;
+    width: 500px;
+    height: 80%;
+    background-color: #A28D5B;
+  }
+
+  .textBox {
+      height: 93%;
+      margin: 5px;
+      background-color: whitesmoke;
+      overflow-y: scroll;
+  }
+
+  .input {
+    width: 433px;
+  }
+
+  .watsonText {
+      font-size: 25px;
+      float: left;
+      text-align: left;
+      background-color: #0030575d;
+      width: 75%;
+      color: #000000;
+      padding: 5px;
+      border-radius: 0px 100px 100px 0px;
+      margin-top: 5px;
+  }
+
+  .userText {
+    float: right;
+    font-size: 25px;  
+    width: 75%;
+    text-align: right;
+    background-color: rgba(162, 141, 91, 0.288);
+    border-radius: 100px 0px 0px 100px;
+    margin-top: 5px;
+    padding: 5px;
+  }

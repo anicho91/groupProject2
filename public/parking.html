@@ -39,16 +39,16 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="/home"
-                >Home <span class="sr-only">(current)</span></a>
+                >Home </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/chat">Chat </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/parking">Parking </a>
+              <a class="nav-link" href="/parking">Parking <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/weather">Weather </a>
+                    <a class="nav-link" href="/weather">Weather </a>
             </li>
             <li class="nav-item"><a class="nav-link" href="#">*Login</a></li>
           </ul>
@@ -56,12 +56,40 @@
       </nav>
     </div>
 
-    <div class="main">
-        
+    
+      <div class="main">
+      <div class="parking">
+        <img src="parkmap.png" alt="Gameday Parking Map" height="400px">
+
+                  <form class="busesForm">
+                  </form>
+                  <div class="predictions d-none" id="result">
+                      <h1 id="stingerRoute"></h1>
+                      <table class="table table-bordered table-hover">
+                          <caption>Next Buses</caption>
+                          <thead>
+                              <tr>
+                                  <th>Direction</th>
+                                  <td id="direction"></td>
+                              </tr>
+                          </thead>
+                          <tbody id="predict">
+                              <tr>
+                                  <th>Next Bus Prediction</th>
+                              </tr>
+                              <tr>
+                                  <th>id</th>
+                                  <th>Arrives in</th>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                </div>  
+              
     </div>
 
 
-    <script src="/app.js"></script>
+    
     <script src="https://code.jquery.com/jquery.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -73,5 +101,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script src="/app.js"></script>
+    <script src="js/buses.js"></script>
   </body>
 </html>
