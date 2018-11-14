@@ -42,7 +42,7 @@ stopDiv.append(stopSelect);
 stopSelect.prepend('<option value="" selected="selected" disabled="disabled">Select a stingerbus stop</option>');
 
 //Append the search button to the page
-busesForm.append('<button type="submit" class="btn btn-primary" id="search-btn">Submit</button>')
+busesForm.append('<button type="submit" class="btn btn-primary" id="search-btn">Submit</button>');
 
 //Make a get request to the API
 $.ajax({
@@ -56,6 +56,9 @@ $.ajax({
 
     //Display the stops served by the route chosen
     const displayStops = function () {
+
+        //Hide the result table on route change
+        $("#result").addClass("d-none");
 
         //Grab the route inpute value
         const route = $("#route-name").val();
@@ -79,7 +82,7 @@ $.ajax({
             for (let i = 0; i < stops.length; i++) {
                 stopSelect.append(`<option value="${stops[i]}">${stops[i]}</option>`)
             }
-            
+
             //Append the route name to the table title
             $("#stingerRoute").text(`${route}`);
 
@@ -112,30 +115,41 @@ $.ajax({
 
                             //Grab the direction title
                             const dirTitle = direction.title;
-                            
+
                             //Append the direction Title to the page
                             $("#direction").text(`${dirTitle}`);
 
+                            $("#predict").empty();
+
                             for (let j = 0; j < direction.prediction.length; j++) {
-                               
+
 
                                 //Grab the predicted time
                                 const time = direction.prediction[j].minutes;
-                              
+
                                 //Append the time to the table
+                                
                                 forecast.append(`<tr>
                                                    <td>${j}</td>
                                                    <td colspan="2">${time} minutes</td>
                                                  </tr>`);
 
                                 console.log("predict" + j + direction.prediction[j].minutes);
+                                
                             }
-
+                            forecast.prepend(` <tr>
+                                                     <th scope="row" colspan="4" class="text-center">Next Bus Prediction</th>
+                                                   </tr>
+                                                   <tr>
+                                                     <th scope="row">id</th>
+                                                     <th colspan="2">Arrives in</th>
+                                                   </tr>`);
 
                         } else {
                             console.log("no bus");
                         }
                     }
+                    
                 }
                 $("#search-btn").on("click", displayTable);
 
@@ -149,3 +163,4 @@ $.ajax({
     $("#route-name").change(displayStops);
 
 })
+
