@@ -8,7 +8,7 @@ body, html{
   background-image: url('../gtstadium3.jpg');
   background-attachment: fixed;
   background-size: cover;
-  
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .d-none {
@@ -30,12 +30,18 @@ body, html{
 .home2, .chat2, .parking2, .weather2 {
   color: #e4e4e4;
   text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+.homediv, .chatdiv, .parkingdiv, .weatherdiv{
+  height: 90px;
 }
 
 
-.homediv:hover .home2, .chat2:hover, .chatdiv:hover, .parking2:hover, .parkingdiv:hover, .weather2:hover, .weatherdiv:hover{
-  background-color: #e4e4e4;
-  color: #2e2e2e;
+.homediv:hover, .chatdiv:hover, .parkingdiv:hover, .weatherdiv:hover{
+  background-color: #a28d5b;
 }
 
 
@@ -48,6 +54,10 @@ body, html{
   text-decoration: none;
 }
 
+
+.smallNav {
+  display: none;
+}
 
 /* //NAV BAR END// */
 
@@ -68,10 +78,6 @@ body, html{
   .main2{
     display: flex;
     background-color: whitesmoke;
-    /* margin-left: 15%;
-    margin-right: 15%;
-    margin-top: 10px;
-    padding: 15px; */
     align-items: center;
     justify-content: center;
     width: 70%;
@@ -103,19 +109,13 @@ body, html{
     align-items: center;
     justify-items: center;
     text-align: center;
-    width: 80%;
+    
   }
 
-  .busForm {
-    align-self: flex-end;
-    justify-self: flex-end;
-  }
-
-  .predictions{
-    width: 50%;
-    align-self: center;
-    justify-self: center;
-  }
+  .table{
+    margin: 0px auto;
+    
+  } 
 
   .chatbot {
     flex-flow: column wrap;
@@ -137,4 +137,93 @@ body, html{
     fill: #a28d5b;
     stroke: #303030;
     stroke-width: 6;
+}
+
+#navbut {
+  z-index: 99;
+  position:fixed; 
+  top:0; 
+  left:0; 
+  bottom: 0;
+  background-color: transparent;
+  color: rgb(226, 226, 226);
+  border-radius: 10px;
+  border: transparent;
+  /* border: #e4e4e4 1px solid; */
+  font-size: 20px;
+  width: 40px;
+  height: 30px;
+  margin-left: 80px;
+  margin-top: 5px;
+  cursor:pointer;
+}
+
+#navbut2 {
+  z-index: 99;
+  position:fixed; 
+  top:0; 
+  left:0; 
+  bottom: 0;
+  background-color: #2e2e2e;
+  color: rgb(226, 226, 226);
+  border-radius: 10px;
+  border: #a28d5b 2px solid;
+  /* border: #e4e4e4 1px solid; */
+  font-size: 20px;
+  width: 40px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  cursor:pointer;
+}
+
+.zoombtn{
+  margin-left: -35px;
+  background-color: transparent;
+  border: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 100; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 725px) { 
+#parkmap{
+  height: 225px;
+}
 }
