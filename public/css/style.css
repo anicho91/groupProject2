@@ -11,78 +11,130 @@ body, html{
   
 }
 
-a{
-    color: #003057;
-  }
-  
-  .navbar {
-    background-color:#A28D5B;
-    margin-left: 15%;
-    margin-right: 15%;
-    z-index: 1000;
-  }
+.d-none {
+  display: none;
+}
 
-  /* .container {
-    height: 100%;
-    width: 100%
-  } */
+ /* //NAV BAR START// */
+
+.navbar{
+ width: 120px;
+ text-align: center;
+ background-color: #2e2e2e;
+ position: fixed;
+ top: 0;
+ bottom: 0;
+}
+
+
+.home2, .chat2, .parking2, .weather2 {
+  color: #e4e4e4;
+  text-decoration: none;
+}
+
+
+.homediv:hover .home2, .chat2:hover, .chatdiv:hover, .parking2:hover, .parkingdiv:hover, .weather2:hover, .weatherdiv:hover{
+  background-color: #e4e4e4;
+  color: #2e2e2e;
+}
+
+
+
+.home2:focus, .chat2:focus, .parking2:focus, .weather2:focus {
+  text-decoration: none;
+}
+
+.home2:active, .chat2:active, .parking2:active, .weather2:active {
+  text-decoration: none;
+}
+
+
+/* //NAV BAR END// */
+
 
   .main {
     display: flex;
     background-color: whitesmoke;
     margin-left: 15%;
     margin-right: 15%;
-    margin-top: -5px;
-    /* align-items: center;
-    justify-content: center; */
-    height: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    align-content: center;
+    justify-content: center;
     width: 70%;
+    
+  }
+
+  .main2{
+    display: flex;
+    background-color: whitesmoke;
+    /* margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10px;
+    padding: 15px; */
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    border-radius: 30px 30px 30px 30px;
+    position: fixed;
+    top: 30%;
+    left: 15%;
+  }
+
+  .homeText {
+    flex-flow: column wrap;
+    align-self: center;
+    text-align: center;
+  }
+
+  .parkingDir, .weatherDir, .watsonDir, .loginDir {
+    background-color: #a28d5b;
+    color: whitesmoke;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    width: 200px;
+    height: 75px;
+    cursor:pointer;
   }
 
   .parking {
-    height: 100%;
     flex-flow: column wrap;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
     width: 80%;
-    flex: auto;
+  }
+
+  .busForm {
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
+
+  .predictions{
+    width: 50%;
+    align-self: center;
+    justify-self: center;
   }
 
   .chatbot {
     flex-flow: column wrap;
     width: 500px;
     height: 80%;
-    background-color: #A28D5B;
+    margin-bottom: 100px;
   }
 
-  .textBox {
-      height: 93%;
-      margin: 5px;
-      background-color: whitesmoke;
-      overflow-y: scroll;
-  }
+  .Chat__header {
+    align-items: center;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    width: 100%;
+}
 
-  .input {
-    width: 433px;
-  }
-
-  .watsonText {
-      font-size: 25px;
-      float: left;
-      text-align: left;
-      background-color: #0030575d;
-      width: 75%;
-      color: #000000;
-      padding: 5px;
-      border-radius: 0px 100px 100px 0px;
-      margin-top: 5px;
-  }
-
-  .userText {
-    float: right;
-    font-size: 25px;  
-    width: 75%;
-    text-align: right;
-    background-color: rgba(162, 141, 91, 0.288);
-    border-radius: 100px 0px 0px 100px;
-    margin-top: 5px;
-    padding: 5px;
-  }
+.WatsonChat__header-shape {
+    border-radius: .5em;
+    fill: #a28d5b;
+    stroke: #303030;
+    stroke-width: 6;
+}
