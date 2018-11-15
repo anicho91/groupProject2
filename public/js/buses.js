@@ -16,7 +16,7 @@ const stopSelect = $("<select>").addClass("form-control").attr("id", "stop-name"
 busesForm.prepend(routeDiv);
 
 //Append the label name to the route div
-routeDiv.append('<label for="route-name">Route Name</label>');
+routeDiv.append('<label for="route-name">Route Name:</label><br>');
 
 //Append the select tag to the route div
 routeDiv.append(routeSelect);
@@ -33,7 +33,7 @@ routeSelect.prepend('<option value="" selected="selected" disabled="disabled">Se
 busesForm.append(stopDiv);
 
 //Append the label name to the stop div
-stopDiv.append('<label for="stop-name">Route Name</label>');
+stopDiv.append('<br><label for="stop-name">Route Stop:</label><br>');
 
 //Append the select tag to the stop div
 stopDiv.append(stopSelect);
@@ -42,7 +42,8 @@ stopDiv.append(stopSelect);
 stopSelect.prepend('<option value="" selected="selected" disabled="disabled">Select a stingerbus stop</option>');
 
 //Append the search button to the page
-busesForm.append('<button type="submit" class="btn btn-primary" id="search-btn">Submit</button>');
+
+busesForm.append('<br><button type="submit" class="btn btn-primary" id="search-btn">Submit</button>')
 
 //Make a get request to the API
 $.ajax({
@@ -130,8 +131,8 @@ $.ajax({
                                 //Append the time to the table
                                 
                                 forecast.append(`<tr>
-                                                   <td>${j}</td>
-                                                   <td colspan="2">${time} minutes</td>
+                                                   <td class="num1">${j}</td>
+                                                   <td colspan="2" class="num2">${time} minutes</td>
                                                  </tr>`);
 
                                 console.log("predict" + j + direction.prediction[j].minutes);
@@ -151,7 +152,9 @@ $.ajax({
                     }
                     
                 }
+                
                 $("#search-btn").on("click", displayTable);
+                
 
             }
             $("#stop-name").change(displayPredictions);
@@ -161,6 +164,5 @@ $.ajax({
         stopSelect.prepend('<option value="" selected="selected" disabled="disabled">Select a stingerbus stop</option>');
     }
     $("#route-name").change(displayStops);
-
-})
+});
 
