@@ -72,7 +72,7 @@ const getInput = function(event){
     input();
     
     const information = {
-        name: name,
+        userName: name,
         email: email
     }
   
