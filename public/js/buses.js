@@ -50,10 +50,6 @@ $.ajax({
     method: "GET",
     url: "https://gtbuses.herokuapp.com/api/v1/agencies/georgia-tech/predictions"
 }).then(function (data) {
-    console.log(data);
-    console.log(data.predictions);
-
-
 
     //Display the stops served by the route chosen
     const displayStops = function () {
@@ -112,7 +108,6 @@ $.ajax({
                         const direction = data.predictions[i].direction;
 
                         if (direction && direction.prediction) {
-                            console.log(direction.prediction);
 
                             //Grab the direction title
                             const dirTitle = direction.title;
@@ -134,8 +129,6 @@ $.ajax({
                                                    <td class="num1">${j}</td>
                                                    <td colspan="2" class="num2">${time} minutes</td>
                                                  </tr>`);
-
-                                console.log("predict" + j + direction.prediction[j].minutes);
                                 
                             }
                             forecast.prepend(` <tr>
