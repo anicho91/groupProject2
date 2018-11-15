@@ -1,4 +1,6 @@
 $(function(){
+
+    //INDEX BUTTON LINKS//
     const showParking = function () {
         window.location.href = '/parking'
     }
@@ -11,9 +13,11 @@ $(function(){
         window.location.href = '/chat'
     }
     
-    const showLogin = function () {
-        window.location.href = '/login'
+    const showSignUp = function () {
+        window.location.href = '/signup'
     }
+
+    //BUTTON FOR TO SHOW AND HIDE NAVBAR//
 
     $(function() {
         $('.nav-button').on("click",
@@ -37,6 +41,11 @@ $(function(){
         
     })
 
+
+
+//PARKING RELATED JS//
+
+
 $(function(){
     $('.zoombtn').on("click",
     function(){
@@ -48,10 +57,111 @@ $(function(){
         $(".modal").addClass("d-none");
     })
 })
+
+//MAILING LIST RELATED JS//
+
+
+const getInput = function(event){
+    event.preventDefault();
+
+    const input = function(){
+        name = $('#name').val();
+        email = $('#email').val();
+        
+    }
+    input();
+    
+    const information = {
+        name: name,
+        email: email
+    }
+  
+    
+    $('#name').val("");
+    $('#email').val("");
+
+    $.ajax({
+        method: "POST",
+        url: "api/signup",
+        data: information
+    })
+}
+
+
+$('.submit').on('click', getInput)
+
+// $('.submit').on('click', getInput)
+
+
+
+const showAdmin = function(event){
+    event.preventDefault();
+    window.location.href = '/admin'
+    
+
+}
+
+$('.admin').on('click', showAdmin)
+
+
+//WEATHER RELATED JS//
+
+$(function(){
+    $('.btn3').on("click",
+    function(){
+        $(".forecast").removeClass("d-none");
+    })
+})
+
+
+
+//ADMIN RELATED JS//
+
+const getList = function(event){
+    event.preventDefault();
+
+    const input = function(){
+        name = $('#name').val();
+        email = $('#email').val();
+        
+    }
+    input();
+    
+    const information = {
+        name: name,
+        email: email
+    }
+  
+    
+    $('#name').val("");
+    $('#email').val("");
+
+    $.ajax({
+        method: "GET",
+        url: "api/signup"}).then(function(data){
+            const admin = $('.adminPage');
+            
+            for (let i = 0; i < data.length; i++){
+                console.log(data)
+                let name = data[i].name;
+                let email = data[i].email;
+                console.log(name, email)
+
+                admin.append(`<div><b>${name}: ${email}</b></div><br><br>`);
+                
+            }
+        })
+}
+
+
+$('.listbtn').on('click', getList)
+
+
     
     $('.parkingDir').on('click', showParking);
     $('.weatherDir').on('click', showWeather);
     $('.watsonDir').on('click', showChat);
-    $('.loginDir').on('click', showLogin);
+    $('.signupDir').on('click', showSignUp);
+    // $('.loginDir').on('click', showLogin);
 })
 
