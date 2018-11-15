@@ -1,3 +1,23 @@
+// const express = require("express");
+// const path = require("path");
+// const PORT = process.env.PORT || 8080;
+// const db = require("./models");
+// const app = express();
+
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+
+// app.use(express.static(path.join(__dirname, "./public")));
+
+// require("./routes/api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+
+// db.sequelize.sync().then(function() {
+//   app.listen(PORT, function() {
+//     console.log(`App is now listening on PORT ${PORT}`);
+//   });
+// });
+
 const express = require("express");
 const path = require("path");
 
@@ -15,7 +35,6 @@ var indexRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
 dotenv.load();
 /////////////////
-
 
 require("dotenv").config();
 
@@ -37,7 +56,6 @@ require("./routes/html-routes.js")(app);
 // require("./routes/auth")(app);
 // require("./routes/users")(app);
 // require("./routes/index")(app);
-
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
@@ -67,7 +85,6 @@ var strategy = new Auth0Strategy(
 
 passport.use(strategy);
 
-
 // You can use this section to keep a smaller payload
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -76,7 +93,6 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
   done(null, user);
 });
-
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -98,7 +114,6 @@ if (app.get('env') === 'production') {
 }
 
 app.use(session(sess));
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -155,6 +170,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-
-
-
