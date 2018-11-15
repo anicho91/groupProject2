@@ -2,39 +2,23 @@ const db = require('../models');
 
 module.exports = function(app) {
 
-    
-    app.get('/api/user', function(req, res) {
-      db.Inventory.findAll({})
-      .then(function(dbInventory) {
-        res.json(dbInventory);
-      }).catch(function(error) {
-        res.json({ error: error });
-      });
-    });
 
-      app.post('/api/user', function(req, res) {
-        db.Inventory.create(req.body).then(function(dbInventory) {
-          res.json(dbInventory);
+      app.post('/api/signup', function(req, res) {
+        db.UserEmail.create(req.body).then(function(UserEmail) {
+          res.json(UserEmail);
         }).catch(function(error) {
           res.json({ error: error });
         });
       });
 
-      app.get('/api/watson', function(req, res) {
-        db.Inventory.findAll({})
-        .then(function(dbInventory) {
-          res.json(dbInventory);
+      app.get('/api/signup', function(req, res) {
+        db.UserEmail.findAll({})
+        .then(function(UserEmail) {
+          res.json(UserEmail);
         }).catch(function(error) {
           res.json({ error: error });
         });
       });
   
-        app.post('/api/watson', function(req, res) {
-          db.Inventory.create(req.body).then(function(dbInventory) {
-            res.json(dbInventory);
-          }).catch(function(error) {
-            res.json({ error: error });
-          });
-        });
 
 }  
