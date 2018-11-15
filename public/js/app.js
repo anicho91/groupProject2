@@ -72,7 +72,7 @@ const getInput = function(event){
     input();
     
     const information = {
-        name: name,
+        userName: name,
         email: email
     }
   
@@ -127,10 +127,7 @@ const getList = function(event){
     }
     input();
     
-    const information = {
-        name: name,
-        email: email
-    }
+
   
     
     $('#name').val("");
@@ -143,7 +140,7 @@ const getList = function(event){
             
             for (let i = 0; i < data.length; i++){
                 console.log(data)
-                let name = data[i].name;
+                let name = data[i].userName;
                 let email = data[i].email;
                 console.log(name, email)
 
