@@ -1,5 +1,5 @@
 //Dynamically generate the weather window on the main page
-$("#main").prepend(`<div class="row">
+$(".weathercont").prepend(`<div class="row">
                         <div class="col-md-5 ml-auto">
                             <div class="card">
                               <div class="card-body" id="weather">
@@ -10,14 +10,14 @@ $("#main").prepend(`<div class="row">
                     </div>`);
 
 //Dynamically generate the weekly forecast page on click
-const forecastPage = $("#forecast");
+const forecastPage = $(".forecast");
 
 forecastPage.append(`<div class="card">
                          <div class="card-body">
                             <table class="table" id="forecast-table">
                               <thead id="forecast-head">
                                   <tr class="table-borderless text-center">
-                                     <td scope="col" colspan="12"><h1>Atlanta,GA</h1></td>
+                                     
                                   </tr>
                               </thead>
                             </table>
@@ -101,9 +101,9 @@ $.ajax({
   forecastTable.append(forecastBody);
 
   //Append rows to the table body
-  forecastBody.append(`<tr id="hour"></tr>
-                       <tr id="precipitation"></tr>
-                       <tr id="temperatures"></tr>
+  forecastBody.append(`<tr id="hour"><th><b>Time: </b></th></tr>
+                       <tr id="precipitation"><th><b>Chance of Rain: </b></th></tr>
+                       <tr id="temperatures"><th><b>Hourly: </b></th></tr>
                        <tr id="next-day"></tr>
                        `);
 
@@ -138,7 +138,7 @@ $.ajax({
   weather.append(geoVar);
 
   //Append a button to the weather card
-  geoVar.append(`<button type="button" class="btn btn-light">See All</button>`);
+  // geoVar.append(`<button type="button" class="btn3">See All</button>`);
 
   //Grab temperatures for the next 6 hours
   const hourlyForecast = data.hourly.data;
@@ -186,34 +186,32 @@ $.ajax({
     const lowTemperatures = Math.round(dailyForecast[i].temperatureLow);
 
     forecastBody.append(`<tr class="table-borderless">
-                            <td colspan="5">${whatweekDay}</td>
-                            <td colspan="5">${dayIcon}</td>
-                            <td colspan="1">${highTemperatures} º</td>
-                            <td colspan="1">${lowTemperatures} º</td>
+                                     
+                            <td colspan="5">${whatweekDay}<br></td>
+                            
+                            <td colspan="5">${dayIcon}<br></td>
+                            <th><b>High</b></th>
+                            <td colspan="1">${highTemperatures} º<br></td>
+                            <th><b>Low</b></th>
+                            <td colspan="1">${lowTemperatures} º<br></td>
                          </tr>`);
 
   }
 
   //Append curent weather to the forecast page
-  forecastHead.append(`<tr class="table-borderless text-center">
-                          <td scope="col" colspan="12">${icon}</td>
-                       </tr>
-                       <tr class=" table-borderless text-center">
-                          <td scope="col" colspan="12">
-                            <h6>${temp} º</h6>
-                          </td>
-                       </tr>
-                       <tr class="table-borderless" id="today">
-                          <td scope="col" colspan="10">${today.Date}  Today</td>
-                          <td>${today.High} º</td>
-                          <td>${today.Low} º</td>
+  forecastHead.append(`<tr class="table-borderless" id="today">
+                          <td scope="col" colspan="10"><b>Today's High & Low</b><br><br></td>
+                          <td><b>High:</b> ${today.High} º<br><br></td>
+                          <td><b>Low: </b>${today.Low} º<br><br></td>
                        </tr>`);
 
   //Append next day weather to the forecast page
- $("#next-day").append(`<td colspan="5">${nextday.Date}</td>
-                        <td colspan="5">${nextday.icon}</td>
-                        <td colspan="1">${nextday.High} º</td>
-                        <td colspan="1">${nextday.Low} º</td>`);
+ $("#next-day").append(`<td colspan="5">${nextday.Date}<br></td>
+                        <td colspan="5">${nextday.icon}<br></td>
+                        <th><b>High</b></th>
+                        <td colspan="1">${nextday.High} º<br></td>
+                        <th><b>Low</b></th>
+                        <td colspan="1">${nextday.Low} º<br></td>`);
 
 
 });

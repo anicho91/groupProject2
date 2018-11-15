@@ -27,7 +27,7 @@ body, html{
 }
 
 
-.home2, .chat2, .parking2, .weather2 {
+.home2, .chat2, .parking2, .weather2, .signup2 {
   color: #e4e4e4;
   text-decoration: none;
   text-align: center;
@@ -35,12 +35,12 @@ body, html{
   line-height: 20px;
 }
 
-.homediv, .chatdiv, .parkingdiv, .weatherdiv{
+.homediv, .chatdiv, .parkingdiv, .weatherdiv, .mailingdiv{
   height: 90px;
 }
 
 
-.homediv:hover, .chatdiv:hover, .parkingdiv:hover, .weatherdiv:hover{
+.homediv:hover, .chatdiv:hover, .parkingdiv:hover, .weatherdiv:hover, .mailingdiv:hover{
   background-color: #a28d5b;
 }
 
@@ -93,7 +93,7 @@ body, html{
     text-align: center;
   }
 
-  .parkingDir, .weatherDir, .watsonDir, .loginDir {
+  .parkingDir, .weatherDir, .watsonDir, .loginDir, .signupDir {
     background-color: #a28d5b;
     color: whitesmoke;
     border-radius: 10px;
@@ -110,6 +110,11 @@ body, html{
     justify-items: center;
     text-align: center;
     
+  }
+
+  .weathercont {
+    margin: 0px auto;
+    line-height: 30px;
   }
 
   .table{
@@ -185,29 +190,29 @@ body, html{
   cursor: pointer;
 }
 
-/* The Modal (background) */
+
 .modal {
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
+  position: fixed;
+  z-index: 100;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%; 
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto; /* 15% from the top and centered */
+  margin: 5% auto; 
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 80%; 
 }
 
-/* The Close Button */
+
 .close {
   color: #aaa;
   float: right;
