@@ -1,4 +1,4 @@
-//Dynamically generate the weather window 
+//Dynamically generate the weather window on the main page
 $("#main").prepend(`<div class="row">
                         <div class="col-md-5 ml-auto">
                             <div class="card">
@@ -9,11 +9,28 @@ $("#main").prepend(`<div class="row">
                         </div>
                     </div>`);
 
-//This function converts unixtimestamp to the timezone
+//Dynamically generate the weekly forecast page on click
+const forecastPage = $("#forecast");
+
+forecastPage.append(`<div class="card">
+                         <div class="card-body">
+                            <table class="table" id="forecast-table">
+                              <thead id="forecast-head">
+                                  <tr class="table-borderless text-center">
+                                     <td scope="col" colspan="12"><h1>Atlanta,GA</h1></td>
+                                  </tr>
+                              </thead>
+                            </table>
+                         </div>
+                      </div>`);
+
+
+//This function converts unixtimestamp to the timezone 12hours based
 const convertTime = function (unixTimeStamp) {
   const date = new Date(unixTimeStamp * 1000);
   return date.toLocaleString();
 };
+
 
 //This function converts values into percentages
 const getpercentage = function (value) {
@@ -37,6 +54,29 @@ const getSpeed = function (numb) {
   return mph;
 }
 
+//This function gets the day
+const getday = function (time) {
+  const date = new Date(time);
+  let day = date.getDay();
+  if (day === 0) {
+    day = "Sunday";
+  } else if (day === 1) {
+    day = "Monday";
+  } else if (day === 2) {
+    day = "Tuesday";
+  } else if (day === 3) {
+    day = "Wednesday";
+  } else if (day === 4) {
+    day = "Thursday";
+  } else if (day === 5) {
+    day = "Friday";
+  } else if (day === 6) {
+    day = "Saturday";
+  }
+  return day;
+}
+
+//This function get the hour
 
 // API key
 const APIKey = '482352b90547e9e4ea9f55ee0c352d57';
@@ -52,10 +92,23 @@ $.ajax({
 }).then(function (data) {
   console.log(data);
 
-  //Create anelement to append the results
+  //Create elements to append the results
   const weather = $("#weather");
+  const forecastTable = $("#forecast-table");
+  const forecastHead = $("#forecast-head");
+  const forecastBody = $("<tbody>");
 
-  //Grab the values
+  //Append the table body to the forecast table
+  forecastTable.append(forecastBody);
+
+  //Append rows to the table body
+  forecastBody.append(`<tr id="hour"></tr>
+                       <tr id="precipitation"></tr>
+                       <tr id="temperatures"></tr>
+                       <tr id="next-day"></tr>
+                       `);
+
+  //Grab the values 
   const time = data.currently.time;
   const temp = data.currently.temperature;
   const humidity = data.currently.humidity;
@@ -69,9 +122,10 @@ $.ajax({
   const rainChance = getpercentage(rainProba);
   const mphSpeed = getSpeed(windspeed);
 
-
-  //Append to the html page
+  //Append to the html pages
   weather.append(`<p>${UTCtime}</p>`);
+  weather.append(`<p>${icon}</p>`);
+
 
   weather.append(`<h2><i class="fas fa-temperature-high"></i>${temp}</h2>`);
 
@@ -84,37 +138,84 @@ $.ajax({
 
   weather.append(geoVar);
 
+  //Append a button to the weather card
+  geoVar.append(`<button type="button" class="btn btn-light">See All</button>`);
+
   //Grab temperatures for the next 6 hours
   const hourlyForecast = data.hourly.data;
 
-  for (let i = 0; i < 6; i++) {
-    const hours = data.hourly.data[i].time;
-    const hTemperatures = data.hourly.data[i].temperature;
-    console.log(`${hours}  ${hTemperatures}`);
+  for (let i = 0; i < 12; i++) {
+    const hours = hourlyForecast[i].time;
+    const formatedHour =convertTime(hours);
+    const commaIndex = formatedHour.indexOf(",");
+    const columnIndex = formatedHour.indexOf(":");
+    const hr = formatedHour.slice(commaIndex + 1, columnIndex);
+    const ampm = formatedHour.slice(columnIndex + 7);
+    const hTemperatures = Math.round(hourlyForecast[i].temperature);
+    const rainChance = Math.round(getpercentage(hourlyForecast[i].precipProbability));
+    console.log(`this is hr ${hr}`)
+    console.log(`${hr} ${ampm}`);
+    $("#hour").append(`<td>${hr} ${ampm}</td>`);
+    $("#precipitation").append(`<td>${rainChance} %</td>`);
+    $("#temperatures").append(`<td>${hTemperatures} º</td>`);
   }
 
   //Grab temperatures for the week
   const dailyForecast = data.daily.data;
 
-  for (let i = 0; i < 6; i++) {
-    const days = data.daily.data[i].time;
-    const highTemperatures = data.daily.data[i].temperatureHigh;
-    const lowTemperatures = data.daily.data[i].temperatureLow;
-    console.log(`${days}  ${highTemperatures}`);
-    console.log(`${i}  ${lowTemperatures}`);
+  let today = {};
+  let nextday = {};
+  for (let i = 0; i < 7; i++) {
+    //Today's weather
+    today.Date = getday(convertTime(dailyForecast[0].time));
+    today.High = Math.round(dailyForecast[0].temperatureHigh);
+    today.Low = Math.round(dailyForecast[0].temperatureLow);
+    
+    //Nextday's weather
+    nextday.Date = getday(convertTime(dailyForecast[1].time));
+    nextday.icon = dailyForecast[1].icon;
+    nextday.High = Math.round(dailyForecast[1].temperatureHigh);
+    nextday.Low = Math.round(dailyForecast[1].temperatureLow);
+
+
+  }
+  for (let i = 2; i < 8; i++) {
+    const days = dailyForecast[i].time;
+    const formatedDay = convertTime(days);
+    const whatweekDay = getday(formatedDay);
+    const dayIcon = dailyForecast[i].icon;
+    const highTemperatures = Math.round(dailyForecast[i].temperatureHigh);
+    const lowTemperatures = Math.round(dailyForecast[i].temperatureLow);
+
+    forecastBody.append(`<tr class="table-borderless">
+                            <td colspan="5">${whatweekDay}</td>
+                            <td colspan="5">${dayIcon}</td>
+                            <td colspan="1">${highTemperatures} º</td>
+                            <td colspan="1">${lowTemperatures} º</td>
+                         </tr>`);
+
   }
 
+  //Append curent weather to the forecast page
+  forecastHead.append(`<tr class="table-borderless text-center">
+                          <td scope="col" colspan="12">${icon}</td>
+                       </tr>
+                       <tr class=" table-borderless text-center">
+                          <td scope="col" colspan="12">
+                            <h6>${temp} º</h6>
+                          </td>
+                       </tr>
+                       <tr class="table-borderless" id="today">
+                          <td scope="col" colspan="10">${today.Date}  Today</td>
+                          <td>${today.High} º</td>
+                          <td>${today.Low} º</td>
+                       </tr>`);
 
-
-
-
-
-
-
-
-
-
-
+  //Append next day weather to the forecast page
+ $("#next-day").append(`<td colspan="5">${nextday.Date}</td>
+                        <td colspan="5">${nextday.icon}</td>
+                        <td colspan="1">${nextday.High} º</td>
+                        <td colspan="1">${nextday.Low} º</td>`);
 
 
 });
