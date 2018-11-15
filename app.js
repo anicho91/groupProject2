@@ -1,7 +1,5 @@
-const express = require("express");
-const path = require("path");
-
-///// Auth0 code /////////////
+var express = require('express');
+var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -13,35 +11,8 @@ var userInViews = require('./lib/middleware/userInViews');
 var authRouter = require('./routes/auth');
 var indexRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
+
 dotenv.load();
-/////////////////
-
-require("dotenv").config();
-
-const app = express();
-
-var PORT = process.env.PORT || 3000;
-
-const db = require("./models");
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
-
-// require("./lib/middleware/userInViews")(app);
-// require("./routes/auth")(app);
-// require("./routes/users")(app);
-// require("./routes/index")(app);
-
-db.sequelize.sync().then(function () {
-  app.listen(PORT, function () {
-    console.log("App listening on PORT " + `${PORT}`);
-  });
-});
-
-/////// Auth0 code /////////////
 
 // Configure Passport to use Auth0
 var strategy = new Auth0Strategy(
@@ -49,9 +20,7 @@ var strategy = new Auth0Strategy(
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    callbackURL:
-       process.env.AUTH0_CALLBACK_URL ||'http://localhost:8888/'
-       //process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
+    callbackURL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
   },
   function (accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
@@ -63,6 +32,7 @@ var strategy = new Auth0Strategy(
 
 passport.use(strategy);
 
+
 // You can use this section to keep a smaller payload
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -71,6 +41,8 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
   done(null, user);
 });
+
+const app = express();
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -92,6 +64,7 @@ if (app.get('env') === 'production') {
 }
 
 app.use(session(sess));
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -8,81 +8,227 @@ body, html{
   background-image: url('../gtstadium3.jpg');
   background-attachment: fixed;
   background-size: cover;
-  
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-a{
-    color: #003057;
-  }
-  
-  .navbar {
-    background-color:#A28D5B;
-    margin-left: 15%;
-    margin-right: 15%;
-    z-index: 1000;
-  }
+.d-none {
+  display: none;
+}
 
-  /* .container {
-    height: 100%;
-    width: 100%
-  } */
+ /* //NAV BAR START// */
+
+.navbar{
+ width: 120px;
+ text-align: center;
+ background-color: #2e2e2e;
+ position: fixed;
+ top: 0;
+ bottom: 0;
+}
+
+
+.home2, .chat2, .parking2, .weather2, .signup2 {
+  color: #e4e4e4;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+.homediv, .chatdiv, .parkingdiv, .weatherdiv, .mailingdiv{
+  height: 90px;
+}
+
+
+.homediv:hover, .chatdiv:hover, .parkingdiv:hover, .weatherdiv:hover, .mailingdiv:hover{
+  background-color: #a28d5b;
+}
+
+
+
+.home2:focus, .chat2:focus, .parking2:focus, .weather2:focus {
+  text-decoration: none;
+}
+
+.home2:active, .chat2:active, .parking2:active, .weather2:active {
+  text-decoration: none;
+}
+
+
+.smallNav {
+  display: none;
+}
+
+/* //NAV BAR END// */
+
 
   .main {
     display: flex;
     background-color: whitesmoke;
     margin-left: 15%;
     margin-right: 15%;
-    margin-top: -5px;
-    /* align-items: center;
-    justify-content: center; */
-    height: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    align-content: center;
+    justify-content: center;
     width: 70%;
+    
+  }
+
+  .main2{
+    display: flex;
+    background-color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    border-radius: 30px 30px 30px 30px;
+    position: fixed;
+    top: 30%;
+    left: 15%;
+  }
+
+  .homeText {
+    flex-flow: column wrap;
+    align-self: center;
+    text-align: center;
+  }
+
+  .parkingDir, .weatherDir, .watsonDir, .loginDir, .signupDir {
+    background-color: #a28d5b;
+    color: whitesmoke;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    width: 200px;
+    height: 75px;
+    cursor:pointer;
   }
 
   .parking {
-    height: 100%;
     flex-flow: column wrap;
-    width: 80%;
-    flex: auto;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    
   }
+
+  .weathercont {
+    margin: 0px auto;
+    line-height: 30px;
+  }
+
+  .table{
+    margin: 0px auto;
+    
+  } 
 
   .chatbot {
     flex-flow: column wrap;
     width: 500px;
     height: 80%;
-    background-color: #A28D5B;
+    margin-bottom: 100px;
   }
 
-  .textBox {
-      height: 93%;
-      margin: 5px;
-      background-color: whitesmoke;
-      overflow-y: scroll;
-  }
+  .Chat__header {
+    align-items: center;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    width: 100%;
+}
 
-  .input {
-    width: 433px;
-  }
+.WatsonChat__header-shape {
+    border-radius: .5em;
+    fill: #a28d5b;
+    stroke: #303030;
+    stroke-width: 6;
+}
 
-  .watsonText {
-      font-size: 25px;
-      float: left;
-      text-align: left;
-      background-color: #0030575d;
-      width: 75%;
-      color: #000000;
-      padding: 5px;
-      border-radius: 0px 100px 100px 0px;
-      margin-top: 5px;
-  }
+#navbut {
+  z-index: 99;
+  position:fixed; 
+  top:0; 
+  left:0; 
+  bottom: 0;
+  background-color: transparent;
+  color: rgb(226, 226, 226);
+  border-radius: 10px;
+  border: transparent;
+  /* border: #e4e4e4 1px solid; */
+  font-size: 20px;
+  width: 40px;
+  height: 30px;
+  margin-left: 80px;
+  margin-top: 5px;
+  cursor:pointer;
+}
 
-  .userText {
-    float: right;
-    font-size: 25px;  
-    width: 75%;
-    text-align: right;
-    background-color: rgba(162, 141, 91, 0.288);
-    border-radius: 100px 0px 0px 100px;
-    margin-top: 5px;
-    padding: 5px;
-  }
+#navbut2 {
+  z-index: 99;
+  position:fixed; 
+  top:0; 
+  left:0; 
+  bottom: 0;
+  background-color: #2e2e2e;
+  color: rgb(226, 226, 226);
+  border-radius: 10px;
+  border: #a28d5b 2px solid;
+  /* border: #e4e4e4 1px solid; */
+  font-size: 20px;
+  width: 40px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  cursor:pointer;
+}
+
+.zoombtn{
+  margin-left: -35px;
+  background-color: transparent;
+  border: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+}
+
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 725px) { 
+#parkmap{
+  height: 225px;
+}
+}
