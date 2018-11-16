@@ -17,6 +17,10 @@ $(function(){
         window.location.href = '/signup'
     }
 
+    const showLogin = function () {
+        window.location.href = '/login'
+    }
+
     //BUTTON FOR TO SHOW AND HIDE NAVBAR//
 
     $(function() {
@@ -152,13 +156,11 @@ const getList = function(event){
 
 
 $('.listbtn').on('click', getList)
-
-
     
     $('.parkingDir').on('click', showParking);
     $('.weatherDir').on('click', showWeather);
     $('.watsonDir').on('click', showChat);
     $('.signupDir').on('click', showSignUp);
-    // $('.loginDir').on('click', showLogin);
+    $('.loginDir').on('click', showLogin);
 })
 
