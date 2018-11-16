@@ -25,7 +25,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/admin.html"));
   });
 
-  // app.get("/login", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "#"));
-  // });
+   app.get("/logout", function(req, res) {
+     res.sendFile("https://gtprojtwo.auth0.com/v2/logout");
+   });
 };
