@@ -124,10 +124,7 @@ const getList = function(event){
     }
     input();
     
-    const information = {
-        name: name,
-        email: email
-    }
+
   
     
     $('#name').val("");
