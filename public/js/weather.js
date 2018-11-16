@@ -1,3 +1,5 @@
+
+
 //Dynamically generate the weather window on the main page
 $(".weathercont").prepend(`<div class="row">
                         <div class="col-md-5 ml-auto">
@@ -83,7 +85,7 @@ const APIKey = '482352b90547e9e4ea9f55ee0c352d57';
 
 // URL
 
-let queryURL = `https://api.darksky.net/forecast/${APIKey}/33.7490,-84.3880?exclude=minutely,alerts,flags&unit=us`;
+let queryURL = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${APIKey}/33.7490,-84.3880?exclude=minutely,alerts,flags&unit=us`;
 
 //AJAX call to the darksky API
 $.ajax({
