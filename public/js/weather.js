@@ -82,15 +82,15 @@ const getday = function (time) {
 const APIKey = '482352b90547e9e4ea9f55ee0c352d57';
 
 // URL
-const corsAnywhere = "http://cors-anywhere.herokuapp.com/";
-let queryURL = `${corsAnywhere}https://api.darksky.net/forecast/${APIKey}/33.7490,-84.3880?exclude=minutely,alerts,flags&unit=us`;
+
+let queryURL = `https://api.darksky.net/forecast/${APIKey}/33.7490,-84.3880?exclude=minutely,alerts,flags&unit=us`;
 
 //AJAX call to the darksky API
 $.ajax({
   url: queryURL,
   method: 'GET'
 }).then(function (data) {
-  console.log(data);
+  
 
   //Create elements to append the results
   const weather = $("#weather");
@@ -153,8 +153,6 @@ $.ajax({
     const ampm = formatedHour.slice(columnIndex + 7);
     const hTemperatures = Math.round(hourlyForecast[i].temperature);
     const rainChance = Math.round(getpercentage(hourlyForecast[i].precipProbability));
-    console.log(`this is hr ${hr}`)
-    console.log(`${hr} ${ampm}`);
     $("#hour").append(`<td>${hr} ${ampm}</td>`);
     $("#precipitation").append(`<td>${rainChance} %</td>`);
     $("#temperatures").append(`<td>${hTemperatures} º</td>`);

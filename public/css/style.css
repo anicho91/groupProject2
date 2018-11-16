@@ -27,7 +27,7 @@ body, html{
 }
 
 
-.home2, .chat2, .parking2, .weather2, .signup2 {
+.home2, .chat2, .parking2, .weather2, .signup2, .logout2 {
   color: #e4e4e4;
   text-decoration: none;
   text-align: center;
@@ -35,22 +35,22 @@ body, html{
   line-height: 20px;
 }
 
-.homediv, .chatdiv, .parkingdiv, .weatherdiv, .mailingdiv{
+.homediv, .chatdiv, .parkingdiv, .weatherdiv, .mailingdiv, .logoutdiv{
   height: 90px;
 }
 
 
-.homediv:hover, .chatdiv:hover, .parkingdiv:hover, .weatherdiv:hover, .mailingdiv:hover{
+.homediv:hover, .chatdiv:hover, .parkingdiv:hover, .weatherdiv:hover, .mailingdiv:hover,.logoutdiv:hover{
   background-color: #a28d5b;
 }
 
 
 
-.home2:focus, .chat2:focus, .parking2:focus, .weather2:focus {
+.home2:focus, .chat2:focus, .parking2:focus, .weather2:focus, .logoutdiv:focus {
   text-decoration: none;
 }
 
-.home2:active, .chat2:active, .parking2:active, .weather2:active {
+.home2:active, .chat2:active, .parking2:active, .weather2:active, .logoutdiv:active {
   text-decoration: none;
 }
 
@@ -231,4 +231,9 @@ body, html{
 #parkmap{
   height: 225px;
 }
+
+.main2{
+  top: 20px;
+}
+
 }
