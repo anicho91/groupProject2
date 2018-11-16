@@ -1,4 +1,5 @@
 const path = require("path");
+const cors = require("cors");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
