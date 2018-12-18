@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Aletheia37!",
+    "password": "root",
     "database": "mailingList",
     "host": "localhost",
     "port": 3306,
