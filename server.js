@@ -81,7 +81,7 @@ app.use(cookieParser());
 
 // config express-session
 var sess = {
-  secret: 'YvZWphyzINcvuuyn8PtPSoG4quPGvbuermQ-ByK97Z7g8aECmldqQlUJJvRnKFNs',
+  secret: ' ',
   cookie: {},
   resave: false,
   saveUninitialized: true
